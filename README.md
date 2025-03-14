@@ -22,10 +22,10 @@ EcoTrack is a platform designed to revolutionize recycling by directly connectin
 
 Our backend is hosted on Render: [EcoTrack Backend](https://b-p-m-s.onrender.com)
 
+
 ## Key Insights
 
 During development, the team learned the importance of careful planning and structuring code. Thinking through the design and architecture of the system before coding ensured smooth implementation and reduced errors.
-
 
 
 ## Demo
