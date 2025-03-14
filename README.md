@@ -29,7 +29,7 @@ During development, the team learned the importance of careful planning and stru
 
 ## Demo
  Check it out here:
-<a href="https://www.linkedin.com/in/your-profile/posts/post-link](https://www.linkedin.com/posts/raghavendranadiminti_react-sustainable-project-activity-7289426716781854721-Ut-X?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEYXB98BjGEana6LhLdi24My_PhMhTBdI4w" target="_blank">
+<a href="https://www.linkedin.com/posts/raghavendranadiminti_react-sustainable-project-activity-7289426716781854721-Ut-X?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEYXB98BjGEana6LhLdi24My_PhMhTBdI4w" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn Post" width="40" height="40">
 </a>
 
