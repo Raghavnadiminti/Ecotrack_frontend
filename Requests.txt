@@ -1,0 +1,37 @@
+import * as React from 'react';
+import { useState,useEffect } from 'react';
+import { Socket,io } from 'socket.io-client';
+import { Button, View, StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
+
+
+export default function Request(){
+      const [data,setData]=useState(null)
+      const [requests,setRequests]=useState([])
+    let socket=io('https://b-p-m-s.onrender.com/req_pend') 
+    socket.on('requested',({username,loc})=>{
+      setData(username)
+    })
+   
+
+    socket.on("reqaccept",({req,msg})=>{setData(msg)
+      console.log(req,msg)
+    }) 
+
+   
+
+    function accept_req(){
+      socket.emit('accept_req',{id:"1234",username:"raghavendra"}) 
+    }
+
+          
+
+        return(
+          <View>
+            <Text>{data}</Text>
+            <TouchableOpacity onPress={accept_req} >
+    <Text >accept</Text>
+  </TouchableOpacity>
+            </View>
+            
+        )
+}

@@ -1,0 +1,113 @@
+import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
+import { useState,useEffect } from 'react';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { io } from 'socket.io-client';
+import WeightInputScreen from './Input';
+export default function Scanner() {
+ 
+  const [permission, requestPermission] = useCameraPermissions();
+  const [flag,setFlag]=useState(true) 
+  let socket=io('https://b-p-m-s.onrender.com/collector-waste-confirm') 
+
+  useEffect(()=>{
+      setFlag(true)
+
+     },[])
+
+   
+      
+
+
+
+  if (!permission) {
+
+    return <View />;
+  }
+
+  if (!permission.granted) {
+   
+    return (
+      <View style={styles.container}>
+        <Text style={styles.message}>We need your permission to show the camera</Text>
+        <Button onPress={requestPermission} title="grant permission" />
+      </View>
+    );
+  }
+
+  function toggleCameraFacing() {
+    setFacing(current => (current === 'back' ? 'front' : 'back'));
+  }
+  function getData(e){
+
+    console.log(e.data)
+    setFlag(false)
+    try{
+    let value=e.data
+    const parts = value.split("//");
+    const id = parts[1].split("=")[1];     
+    const tripno = parts[2].split("=")[1];
+    
+    console.log(id,tripno)
+      socket.emit('user_req',{username:"raghavendra",
+                            collectorid:`${id}`,
+                            weight:50
+                          }) 
+                        }
+                        catch(error){
+                          console.log("scan correct qr")
+                        }
+                            
+  }
+      
+
+  return (
+    <View style={styles.container}>
+      {flag&&
+      <CameraView style={styles.camera}  barcodeScannerSettings={{barcodeTypes:['qr']}} onBarcodeScanned={getData}>
+      </CameraView>
+}
+{!flag && <WeightInputScreen/>}
+
+    </View>
+  );
+}
+
+
+function Submit(){
+        
+      
+        
+}
+
+
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  message: {
+    textAlign: 'center',
+    paddingBottom: 10,
+  },
+  camera: {
+    flex: 1,
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    margin: 64,
+  },
+  button: {
+    flex: 1,
+    alignSelf: 'flex-end',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+});

@@ -1,0 +1,86 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet } from 'react-native';
+import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
+
+const WeightInputScreen = () => {
+  const [weight, setWeight] = useState('');
+  const navigation=useNavigation()
+    function handlePress(){
+           axios.get(`https://b-p-m-s.onrender.com/amount-update/1234/${weight}`);
+           navigation.navigate('Home')
+    }
+  
+  return (
+    <View style={styles.container}>
+      <View style={styles.backgroundLayer}>
+        <TextInput
+          style={styles.input}
+          keyboardType="numeric"
+          placeholder="Enter weight"
+          placeholderTextColor="#555"
+          value={weight}
+          onChangeText={setWeight}
+        />
+        <TouchableOpacity style={styles.Button} onPress={handlePress}>
+          <Text style={styles.buttonText}>Submit</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16,
+    backgroundColor: '#E3F2FD',
+  },
+  title: {
+    fontSize: 24,
+    marginBottom: 20,
+    color: '#1E88E5',
+  },
+  backgroundLayer: {
+    width: '100%',
+    backgroundColor: '#FFFFFF', 
+    padding: 20,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    alignItems: 'center',
+  },
+  label: {
+    fontSize: 18,
+    marginBottom: 10,
+    color: '#1976D2',
+  },
+  input: {
+    height: 40,
+    borderColor: '#90CAF9',
+    borderWidth: 1,
+    marginBottom: 20,
+    paddingHorizontal: 10,
+    width: '100%',
+    borderRadius: 5,
+    backgroundColor: '#FFFFFF',
+  },
+  Button: {
+    width: '50%',
+    backgroundColor: '#1976D2',
+    paddingVertical: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white', 
+    fontSize: 18,
+  },
+});
+
+export default WeightInputScreen;
