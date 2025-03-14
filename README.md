@@ -27,9 +27,7 @@ Our backend is hosted on Render: [EcoTrack Backend](https://b-p-m-s.onrender.com
 
 During development, the team learned the importance of careful planning and structuring code. Thinking through the design and architecture of the system before coding ensured smooth implementation and reduced errors.
 
-
 ## Demo
-
  Check it out here:
 
 [![LinkedIn Post](https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png)](https://www.linkedin.com/in/your-profile/posts/post-link)
